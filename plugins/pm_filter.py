@@ -765,17 +765,17 @@ async def auto_filter(client, msg, spoll=False):
         cap = f"<b>✪ Fɪʟᴍ : {search}\n⍟ Yᴇᴀʀ : N/A\n✪ Lᴀɴɢᴜᴀɢᴇ : N/A</b>\n\n✯ 𝖱𝖾𝗊𝗎𝖾𝗌𝗍𝖾𝖽 𝖡𝗒 {message.from_user.mention}\n★ 𝖴𝗉𝗅𝗈𝖺𝖽𝖾𝖽 𝖡𝗒 {message.chat.title}"
     if imdb and imdb.get('poster'):
         try:
-            fmsg = await message.reply_photo(text=cap[:1024],
+            fmsg = await message.reply_text(text=cap[:1024],
                                       reply_markup=InlineKeyboardMarkup(btn))
         except (MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty):
             pic = imdb.get('poster')
             poster = pic.replace('.jpg', "._V1_UX360.jpg")
-            fmsg = await message.reply_photo(text=cap[:1024], reply_markup=InlineKeyboardMarkup(btn))
+            fmsg = await message.reply_text(text=cap[:1024], reply_markup=InlineKeyboardMarkup(btn))
         except Exception as e:
             logger.exception(e)
-            fmsg = await message.reply_photo(cap, reply_markup=InlineKeyboardMarkup(btn))
+            fmsg = await message.reply_text(cap, reply_markup=InlineKeyboardMarkup(btn))
     else:
-        fmsg = await message.reply_photo(cap, reply_markup=InlineKeyboardMarkup(btn))
+        fmsg = await message.reply_text(cap, reply_markup=InlineKeyboardMarkup(btn))
     if spoll:
         await msg.message.delete() 
   
