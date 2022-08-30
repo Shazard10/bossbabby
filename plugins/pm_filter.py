@@ -763,6 +763,7 @@ async def auto_filter(client, msg, spoll=False):
         )
     else:
         cap = f"<b>✪ Fɪʟᴍ : {search}\n⍟ Yᴇᴀʀ : N/A\n✪ Lᴀɴɢᴜᴀɢᴇ : N/A</b>\n\n✯ 𝖱𝖾𝗊𝗎𝖾𝗌𝗍𝖾𝖽 𝖡𝗒 {message.from_user.mention}\n★ 𝖴𝗉𝗅𝗈𝖺𝖽𝖾𝖽 𝖡𝗒 {message.chat.title}"
+    if imdb and imdb.get('poster'):
         try:
             fmsg = await message.reply_text(text=cap[:1024],
                                       reply_markup=InlineKeyboardMarkup(btn))
